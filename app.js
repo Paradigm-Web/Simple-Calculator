@@ -90,6 +90,7 @@ operands.forEach((op) => {
         if (operand !== null) {
             inputs[0] = operate(inputs[0], operand, inputs[1]).toString();
             inputs[1] = null;
+            updateScreen(inputs[0]);
         }
         operand = window[op.id];
         updateScreen(output.concat(op.value));
