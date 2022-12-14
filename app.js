@@ -36,8 +36,6 @@ function operate(num1, operand, num2) {
 let output = "0.0";
 let cleared = false;
 let operand = null;
-let n1 = 5;
-let n2 = 7;
 let inputs = [null, null];
 
 const calculator = document.querySelector('.calculator');
