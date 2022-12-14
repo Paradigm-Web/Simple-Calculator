@@ -13,6 +13,7 @@
     --vsc-light: rgb(45, 45, 45);
     --vsc-dark: rgb(37, 37, 37);
     --vsc-darkest: rgb(25, 25, 25);
+    --vsc-transparent: rgba(25, 25, 25, 0.825);
 
     --cyberbg: rgb(27, 26, 44);
 
@@ -38,12 +39,134 @@
     --glow-white: rgba(255, 255, 255, 0.541);
 }
 
+@keyframes colorRotateBorderGlow {
+    from {
+        border-color: rgba(255, 255, 0, 0.815);
+        box-shadow: 0 0 4em 0.8em rgba(255, 255, 0, 0.5);
+    }
+    17.5% {
+        border-color: rgba(255, 166, 0, 0.822);
+        box-shadow: 0 0 6em 1.8em rgba(255, 166, 0, 0.5);
+    }
+    35% {
+        border-color: rgba(255, 0, 43, 0.849);
+        box-shadow: 0 0 4em 0.8em rgba(255, 0, 34, 0.5);
+    }
+    50% {
+        border-color: rgba(206, 43, 255, 0.767);
+        box-shadow: 0 0 3em 0.4em rgba(206, 43, 255, 0.5);
+    }
+    75% {
+        border-color: rgba(0, 255, 255, 0.829);
+        box-shadow: 0 0 6em 1.8em rgba(0, 255, 255, 0.5);
+    }
+    88% {
+        border-color: #85ff66d7;
+        box-shadow: 0 0 4em 0.8em rgba(172, 255, 47, 0.5);
+    }
+    100% {
+        border-color: rgba(255, 255, 0, 0.815);
+        box-shadow: 0 0 4em 0.8em rgba(255, 255, 0, 0.5);
+    }
+  }
+  @keyframes colorRotateBorderRaw {
+    from {
+        border-color: rgba(119, 119, 0, 0.363);
+    }
+    17.5% {
+        border-color: rgba(119, 77, 0, 0.418);
+    }
+    35% {
+        border-color: rgba(116, 0, 19, 0.418);
+    }
+    50% {
+        border-color: rgba(206, 43, 255, 0.4);
+    }
+    75% {
+        border-color: rgba(0, 99, 99, 0.349);
+    }
+    88% {
+        border-color: #15690075;
+    }
+    100% {
+        border-color: rgba(119, 119, 0, 0.363);
+    }
+  }
+  @keyframes colorRotateText {
+    from {
+        color: yellow;
+    }
+    17.5% {
+        color: orange;
+    }
+    35% {
+        color: red;
+    }
+    50% {
+        color: rgba(206, 43, 255, 0.986);
+    }
+    75% {
+        color: #33cfff;
+    }
+    88% {
+        color: #85ff66;
+    }
+    100% {
+        color: yellow;
+    }
+  }
+  @keyframes colorRotateBG {
+    from {
+      background-color: rgb(253, 253, 51);
+    }
+    17.5% {
+        background-color: rgb(252, 180, 46);
+    }
+    35% {
+        background-color: rgb(255, 43, 71);
+    }
+    50% {
+        background-color: rgba(205, 51, 252, 0.918);
+    }
+    75% {
+        background-color: #57d8ff;
+    }
+    88% {
+        background-color: #85fa68;
+    }
+    100% {
+        background-color: rgb(253, 253, 51);
+    }
+  }
+  @keyframes colorRotateTextGlow {
+    from {
+        text-shadow: 0 0 15px var(--glow-yellow), 0 0 25px var(--glow-yellow), 0 0 30px var(--glow-yellow);
+    }
+    17.5% {
+        text-shadow: 0 0 25px var(--glow-orange), 0 0 35px var(--glow-orange), 0 0 40px var(--glow-orange);
+    }
+    35% {
+        text-shadow: 0 0 15px var(--glow-red), 0 0 25px var(--glow-red), 0 0 30px var(--glow-red);
+    }
+    50% {
+        text-shadow: 0 0 25px var(--glow-purple), 0 0 35px var(--glow-purple), 0 0 40px var(--glow-purple);
+    }
+    75% {
+        text-shadow: 0 0 15px var(--glow-blue), 0 0 25px var(--glow-blue), 0 0 30px var(--glow-blue);
+    }
+    88% {
+        text-shadow: 0 0 25px var(--glow-green), 0 0 35px var(--glow-green), 0 0 40px var(--glow-green);
+    }
+    100% {
+        text-shadow: 0 0 15px var(--glow-yellow), 0 0 25px var(--glow-yellow), 0 0 30px var(--glow-yellow);
+    }
+  }
 @keyframes bg-glow {
     from {
-        filter: brightness(100%);
+        filter: brightness(105%);
     }
     to {
-        filter: brightness(90%);
+        filter: brightness(85%);
     }
 }
 @keyframes border-glow {
@@ -130,9 +253,9 @@ text-glow-white {
 
 body {
     height: 100%;
-    -webkit-animation: bg-glow 2.5s ease-in-out infinite alternate;
-    -moz-animation: bg-glow 2.5s ease-in-out infinite alternate;
-    animation: bg-glow 2.5s ease-in-out infinite alternate;
+    -webkit-animation: bg-glow 5s ease-in-out infinite alternate;
+    -moz-animation: bg-glow 5s ease-in-out infinite alternate;
+    animation: bg-glow 5s ease-in-out infinite alternate;
     background-image: url("src/calculatorbackground.png");
     color: var(--maroon-shade);
     /* background: var(--cyberbg); */
@@ -162,12 +285,12 @@ body {
 
 .calculator {
     border-radius: 1em;
-    -webkit-animation: border-glow 2.5s ease-in-out infinite alternate;
-    -moz-animation: border-glow 2.5s ease-in-out infinite alternate;
-    animation: border-glow 2.5s ease-in-out infinite alternate;
+    -webkit-animation: border-glow 2.5s ease-in-out infinite, colorRotateBorderGlow 120s infinite;
+    -moz-animation: border-glow 2.5s ease-in-out infinite, colorRotateBorderGlow 120s infinite;
+    animation: border-glow 2.5s ease-in-out infinite, colorRotateBorderGlow 120s infinite;
     /* box-shadow: inset 0 0 1em .5em var(--cyber-shad); */
     border: 3px solid var(--cyber-1);
-    background-color: var(--vsc-darkest);
+    background-color: var(--vsc-transparent);
     width: 500px;
     height: 90%;
     display: flex;
@@ -175,15 +298,18 @@ body {
     justify-content: center;
     align-items: center;
     gap: 2em;
+    /* opacity: 90%; */
 }
 
 .screen-wrapper {
     height: 15%;
     width: 88%;
-    background-color: var(--cyber);
     border-radius: .3em;
+    -webkit-animation: colorRotateBG 120s infinite, colorRotateBorderRaw 120s infinite;
+    -moz-animation: colorRotateBG 120s infinite, colorRotateBorderRaw 120s infinite;
+    animation: colorRotateBG 120s infinite, colorRotateBorderRaw 120s infinite;
     border: 8px solid var(--cyber-dark);
-    box-shadow: inset 0 0 .8em .3em var(--cyber-dark);
+    box-shadow: inset 0 0 1em .2em rgba(0, 0, 0, 0.438);
     display: flex;
     justify-content: end;
     flex-direction: column;
@@ -191,7 +317,8 @@ body {
 }
 
 .screen {
-    color: var(--cyber-darkest);
+    color: rgba(36, 36, 36, 0.445);
+    text-shadow: 3px 3px 10px rgba(66, 66, 66, 0.842);
     padding: .25em .3em 0 .2em;
     text-align: right;
     font-size: 3.3em;
@@ -255,14 +382,14 @@ body {
 
 .num {
     color: var(--cyber);
-    -webkit-animation: text-glow-yellow 2.5s ease-in-out infinite alternate;
-    -moz-animation: text-glow-yellow 2.5s ease-in-out infinite alternate;
-    animation: text-glow-yellow 2.5s ease-in-out infinite alternate;
+    -webkit-animation: colorRotateTextGlow 120s infinite, colorRotateText 120s infinite;
+    -moz-animation: colorRotateTextGlow 120s infinite, colorRotateText 120s infinite;
+    animation: colorRotateTextGlow 120s infinite, colorRotateText 120s infinite;
 }
 
 .buttons-wrapper > button {
     transition: var(--fast-trans);
-    border-radius: .5em;
+    border-radius: .3em;
     border: 3px solid var(--cyber-btn);
     background-color: var(--vsc-darkest);
     text-align: center;
