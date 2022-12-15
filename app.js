@@ -25,7 +25,6 @@ function multiply(num1, num2) {
 
 // perform an operation
 function operate(num1, operand, num2) {
-    // console.log(`${num1} ${operand.name} ${num2} = `);
     return operand(parseFloat(num1), parseFloat(num2));
 }
 
@@ -44,6 +43,7 @@ const calculator = document.querySelector('.calculator');
 const screen = calculator.querySelector('.screen');
 // update the screen to the input
 function updateScreen(input) {
+
     output = input.toString();
     screen.textContent = output;
 }
@@ -66,6 +66,7 @@ function click(btn, func = () => {null;}) {
 const clear = calculator.querySelector('#clear');
 click(clear, () => {
     updateScreen(`0.0`);
+    inputs = [null, null];
     operand = null;
     cleared = true;
 });
@@ -85,13 +86,7 @@ click(equals, () => {
 const operands = calculator.querySelectorAll('.op');
 operands.forEach((op) => {
     click(op, () => {
-        if (operand !== null) {
-            inputs[0] = operate(inputs[0], operand, inputs[1]).toString();
-            inputs[1] = null;
-            updateScreen(inputs[0]);
-        }
-        operand = window[op.id];
-        updateScreen(output.concat(op.value));
+        handleOperator(op);
     });
 });
 
@@ -99,7 +94,43 @@ operands.forEach((op) => {
 const numbers = calculator.querySelectorAll('.num');
 numbers.forEach((n) => {
     click(n, () => {
-        if (cleared) output = "";
+        handleNumber(n);
+    });
+});
+
+// Operator handler
+function handleOperator(op) {
+    if (inputs[0] === null) {
+        updateScreen(opBeforeIn(op));
+        return;
+    }
+    if (operand !== null) {
+        inputs[0] = operate(inputs[0], operand, inputs[1]).toString();
+        inputs[1] = null;
+        updateScreen(inputs[0]);
+    }
+    operand = window[op.id];
+    updateScreen(output.concat(op.value));
+}
+
+function opBeforeIn(op) {
+    let opName = window[op.id].name;
+    switch (opName) {
+        case 'subtract':
+            inputs[0] = '-';
+            break;
+        case 'add':
+            inputs[0] = '+';
+            break;
+        default:
+            inputs[0] = null;
+    };
+    return inputs[0];    
+}
+
+// Number Handler
+function handleNumber(n) {
+    if (cleared && inputs[0] === null) output = "";
         if (operand === null) {
             if (inputs[0] !== null) {
                 inputs[0] = inputs[0].concat(n.value);
@@ -110,18 +141,6 @@ numbers.forEach((n) => {
                 inputs[1] = inputs[1].concat(n.value);
             } else inputs[1] = n.value;    
         }
-        console.log(inputs);
         cleared = false;
         updateScreen(output.concat(n.value));
-        
-    });
-});
-
-/**
- * Operation Logic
- */
-
-// else if (inputs[0] != null && inputs[1] != null) {
-//     inputs[0] = operate(inputs[0], operand, inputs[1]);
-// }
-
+}

@@ -280,7 +280,7 @@ body {
     align-items: center;
     margin-top: 10px;
     margin-bottom: 30px;
-    height: 840px;
+    height: 830px;
 }
 
 .calculator {
@@ -404,4 +404,9 @@ body {
     transition: var(--fast-trans);
     background-color: rgba(148, 148, 148, 0.452);
     /* scale: 103%; */
+}
+
+footer {
+    letter-spacing: normal;
+    font-family: 'Courier New', Courier, monospace;
 }
